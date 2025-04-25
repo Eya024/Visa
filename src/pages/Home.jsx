@@ -8,6 +8,16 @@ import counselingImage from '../assets/images/counseling.jpg'; // Add your image
 import universityImage from '../assets/images/university.jpg';
 import supportImage from '../assets/images/support.jpg';
 import { Link } from 'react-router-dom';
+import businessSchool from '../assets/images/businessSchool.png';
+import cimt from '../assets/images/cimt.png';
+import eurospeak from '../assets/images/eurospeak.png';
+import imperial from '../assets/images/imperial.png';
+import sheridan from '../assets/images/sheridan.png';
+import TurkUni from '../assets/images/TurkUni.png';
+import canadaCollege from '../assets/images/canadaCollege.png';
+
+
+
 
 
 const Home = () => {
@@ -111,6 +121,89 @@ const Home = () => {
                             <Link to="/about" className="service-link">
                                 Learn more <FaArrowRight className="service-icon" />
                             </Link>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="values-section">
+                <div className="values-container">
+                    <div className="values-content">
+                        <h2 className="values-heading">Elevate Your Academic Journey with Us</h2>
+                        <p className="values-description">
+                            With years of experience in international education, our team has successfully helped countless students secure admissions to top Canadian universities and colleges.
+                        </p>
+
+                        <ul className="values-list">
+                            <li>Personalized Guidance</li>
+                            <li>Expert Knowledge</li>
+                            <li>Commitment to Success</li>
+                        </ul>
+
+                        <button className="values-button">Know more</button>
+                    </div>
+
+                    <div className="values-grid">
+                        <div className="value-card">
+                            <h3>Integrity</h3>
+                            <p>Transparency and honesty in every interaction</p>
+                        </div>
+
+                        <div className="value-card">
+                            <h3>Collaboration</h3>
+                            <p>Building strong partnerships with institutions and students</p>
+                        </div>
+
+                        <div className="value-card">
+                            <h3>Excellence</h3>
+                            <p>Commitment to delivering the highest quality of service</p>
+                        </div>
+
+                        <div className="value-card">
+                            <h3>Diversity</h3>
+                            <p>Embracing multiculturalism and inclusivity</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="partners-section">
+                <div className="partners-container">
+                    <div className="section-header">
+                        <h2 className="section-title">Our Partners</h2>
+                        <div className="section-divider"></div>
+                    </div>
+
+                    <div className="partners-carousel">
+                        <div className="partners-track">
+                            <div className="partner-logo">
+                                <img src={eurospeak} alt="eurospeak" />
+                                <p>EUROSPEAK</p>
+                            </div>
+                            <div className="partner-logo">
+                                <img src={businessSchool} alt="Business School" />
+                                <p>Business School</p>
+                            </div>
+                            <div className="partner-logo">
+                                <img src={imperial} alt="Imperial" />
+                                <p>Imperial</p>
+                            </div>
+                            <div className="partner-logo">
+                                <img src={sheridan} alt="Sheridan" />
+                                <p>Sheridan</p>
+                            </div>
+                            <div className="partner-logo">
+                                <img src={TurkUni} alt="TurkUni" />
+                                <p>TurkUni</p>
+                            </div>
+                            <div className="partner-logo">
+                                <img src={cimt} alt="cimt" />
+                                <p>Cimt</p>
+                            </div>
+                            <div className="partner-logo">
+                                <img src={canadaCollege} alt="Canada College" />
+                                <p>Canada College</p>
+                            </div>
 
                         </div>
                     </div>
