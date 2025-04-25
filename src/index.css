@@ -5,9 +5,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 120px; /* 60px (header height) + 60px (30px top + 30px bottom) */
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.with-header-padding {
+  padding-top: 120px; /* only for pages that are NOT home */
+}
+
+.home-page {
+  padding-top: 0; /* no padding on home so video can go full screen */
+}
+

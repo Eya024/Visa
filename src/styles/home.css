@@ -1,0 +1,449 @@
+/* Home Page Styles */
+.home-container {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+
+/* Video Background Styles */
+.video-background {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    z-index: 0; /* <-- important */
+    margin-top: 0; /* ensure nothing is pushing it down */
+
+  }
+
+.video-background .video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+}
+
+.video-overlay {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2rem;
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4); /* Optional overlay for readability */
+  }
+
+.overlay-content {
+    max-width: 650px;
+}
+
+.tagline {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-transform: uppercase;
+}
+
+.main-heading {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.mission-statement {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+/* Content Sections */
+.content-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Button styles */
+.cta-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    margin-top: 8px;
+    background: linear-gradient(135deg, #BD1A1A, #A31A1A);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(189, 26, 26, 0.3), 0 0 0 rgba(189, 26, 26, 0);
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s ease;
+}
+
+.button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    margin-left: 8px;
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 0.4s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(228, 37, 12, 0.3), 0 0 0 2px rgba(189, 26, 26, 0.2);
+}
+
+.cta-button:hover .button-text {
+    transform: translateX(-4px);
+}
+
+.cta-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(228, 37, 12, 0.3);
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #C77979, #BD1A1A);
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.4s ease;
+}
+
+.cta-button:hover::before {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .video-overlay {
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+    }
+    
+    .tagline {
+        font-size: 0.9rem;
+    }
+    
+    .main-heading {
+        font-size: 2.5rem;
+    }
+    
+    .mission-statement {
+        font-size: 1.1rem;
+    }
+    
+    .cta-button {
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+}
+/* About Us Section */
+.about-section {
+    padding: 6rem 0;
+    background-color: #f9f9f9;
+}
+
+.about-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 4rem;
+    padding: 0 2rem;
+}
+
+.about-image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.about-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.about-heading {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #BD1A1A;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.about-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    margin-top: 1rem;
+    background: transparent;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 2px solid #333;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-width: fit-content;
+}
+
+.about-button:hover {
+    background-color: #333;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design for About Section */
+@media (max-width: 992px) {
+    .about-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .about-heading {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 4rem 0;
+    }
+    
+    .about-heading {
+        font-size: 2rem;
+    }
+    
+    .about-text {
+        font-size: 1rem;
+    }
+}
+
+/* Services Section */
+.services-section {
+    padding: 6rem 0;
+    background-color: #fff;
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.services-subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.services-heading {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #BD1A1A;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.services-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.service-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.service-image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-image {
+    transform: scale(1.05);
+}
+
+.service-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 1.5rem 1.5rem 1rem;
+    color: #333;
+}
+
+.service-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin: 0 1.5rem 1.5rem;
+    flex-grow: 1;
+}
+
+.service-link {
+    display: flex;
+    align-items: center;
+    color: #BD1A1A;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 0 1.5rem 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.service-icon {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.service-link:hover {
+    color: #A31A1A;
+}
+
+.service-link:hover .service-icon {
+    transform: translateX(3px);
+}
+
+/* Responsive Design for Services Section */
+@media (max-width: 992px) {
+    .services-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .services-heading {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-section {
+        padding: 4rem 0;
+    }
+    
+    .services-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-heading {
+        font-size: 2rem;
+    }
+    
+    .service-title {
+        font-size: 1.3rem;
+    }
+}
