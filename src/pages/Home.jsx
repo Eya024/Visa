@@ -1,7 +1,7 @@
 // Home.jsx
 import React, { useEffect } from 'react';
 import '../styles/home.css';
-import homeVideo from '../assets/videos/home.mp4';
+import homeVideo from '../assets/videos/home1.mp4';
 import { FaArrowRight } from 'react-icons/fa';
 import aboutImage from '../assets/images/about-us.jpg'; // Add your image path here
 import counselingImage from '../assets/images/counseling.jpg'; // Add your image paths
