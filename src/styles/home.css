@@ -716,8 +716,8 @@
 /* Trusted Partner Section */
 .trusted-partner-section {
   position: relative;
-  height: 500px;
-  background-image: url('../assets/images/canada.jpg'); /* Add your image path */
+  min-height: 500px; /* changed from height to min-height */
+  background-image: url('../assets/images/canada.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -725,7 +725,9 @@
   align-items: center;
   justify-content: center;
   color: white;
+  overflow: hidden; /* optional: helps avoid accidental spills */
 }
+
 
 .trusted-partner-overlay {
   background-color: rgba(0, 0, 0, 0.5);
