@@ -716,8 +716,8 @@
 /* Trusted Partner Section */
 .trusted-partner-section {
   position: relative;
-  min-height: 500px; /* changed from height to min-height */
-  background-image: url('../assets/images/canada.jpg');
+  height: 500px;
+  background-image: url('../assets/images/canada.jpg'); /* Add your image path */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -725,9 +725,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  overflow: hidden; /* optional: helps avoid accidental spills */
 }
-
 
 .trusted-partner-overlay {
   background-color: rgba(0, 0, 0, 0.5);
@@ -787,7 +785,7 @@
 
 .trusted-partner-button:hover {
   transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(228, 37, 12, 0.3), 0 0 0 2px rgba(189, 26, 26, 0.2);
+  box-shadow: 0 8px 25px rgba(189, 26, 26, 0.4);
 }
 
 /* Responsive Design */

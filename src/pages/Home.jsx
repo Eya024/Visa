@@ -60,12 +60,8 @@ const Home = () => {
                     <div className="about-content">
                         <div className="about-subtitle">ABOUT US</div>
                         <h2 className="about-heading">We are here to help students achieve their academic dreams</h2>
-                        <p className="about-text">
-                            Elegant Services is a multinational agency committed to supporting students from the MENA region in achieving their educational goals abroad.
-                        </p>
-                        <p className="about-text">
-                            Through strategic partnerships with leading academic institutions, the agency ensures a seamless admission process and provides personalized guidance to students.
-                        </p>
+                        
+                       
                         <button className="about-button">
                             Know more about us
                         </button>

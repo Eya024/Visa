@@ -1,0 +1,296 @@
+.about-container {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.about-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.about-content h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 0.5rem;
+}
+
+.about-text {
+    font-weight: 600;
+    color: #BD1A1A;
+    font-size: 5rem;
+    line-height: 0.9;
+    margin: 0;
+    text-align: left;
+}
+
+
+/* Founder section styles with image */
+.founder-container {
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.founder-content {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+    /* Increased from 4rem to 6rem */
+    max-width: 1200px;
+    width: 100%;
+    /* Added to ensure full width utilization */
+}
+
+.founder-text {
+    flex: 1.2;
+    /* Increased from 1 to give more space to text */
+    text-align: left;
+    max-width: 600px;
+    /* Added to prevent text from stretching too far */
+}
+
+.founder-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    /* This will push the image to the right */
+}
+
+.founder-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 2rem;
+    /* Added to push image further right */
+}
+
+/* Keep the rest of your CSS the same */
+.founder-title {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.divider {
+    height: 2px;
+    width: 100px;
+    background-color: #BD1A1A;
+    margin: 1rem 0;
+}
+
+.founder-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.founder-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #BD1A1A;
+    margin-top: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .founder-content {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .founder-text {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .divider {
+        margin: 1rem auto;
+    }
+
+    .founder-image {
+        justify-content: center;
+    }
+
+    .founder-image img {
+        margin-right: 0;
+        max-width: 300px;
+    }
+}
+
+
+/* Vision & Mission section styles */
+.vision-mission-container {
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.vision-mission-content {
+    display: flex;
+    gap: 4rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.vision-section,
+.mission-section {
+    flex: 1;
+    text-align: left;
+}
+
+.vision-title,
+.mission-title {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.vision-text,
+.mission-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .vision-mission-content {
+        flex-direction: column;
+        gap: 3rem;
+        padding: 0 1rem;
+    }
+
+    .vision-section,
+    .mission-section {
+        text-align: center;
+    }
+
+    .vision-title,
+    .mission-title {
+        margin-bottom: 0.5rem;
+    }
+
+    .divider {
+        margin: 1rem auto !important;
+    }
+}
+
+
+
+/* Experts section styles */
+.experts-container {
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.experts-content {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+}
+
+.experts-title {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.consultants-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.consultant-card {
+    background-color: #f8f8f8;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 350px;
+    /* Slightly narrower cards for better image proportion */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.consultant-card:hover {
+    transform: translateY(-5px);
+}
+
+.consultant-image {
+    width: 250px;
+    /* Wider rectangular shape */
+    height: 300px;
+    /* Taller rectangular shape */
+    object-fit: cover;
+    margin: 0 auto 1.5rem;
+    border-radius: 8px;
+    /* Rectangular with slight rounding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.consultant-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #BD1A1A;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.consultant-position {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .consultants-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .consultant-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .consultant-image {
+        width: 200px;
+        height: 250px;
+    }
+
+    .experts-title {
+        font-size: 1.5rem;
+    }
+}
+.experts-heading {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .divider-full {
+    height: 2px;
+    width: 100%;
+    background-color: #BD1A1A;
+    margin: 1rem auto 0;
+    max-width: 1200px;
+  }
