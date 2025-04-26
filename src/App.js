@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
+import Footer from './components/Footer'; // Import the Footer component
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -28,6 +29,7 @@ function App() {
             </PrivateRoutes>
           } />
         </Routes>
+        <Footer /> {/* Add the Footer component here */}
       </Router>
   );
 }

@@ -178,48 +178,70 @@ const Home = () => {
                         <div className="partners-track">
                             <div className="partner-logo">
                                 <img src={eurospeak} alt="eurospeak" />
-                                <p>EUROSPEAK</p>
                             </div>
                             <div className="partner-logo">
                                 <img src={businessSchool} alt="Business School" />
-                                <p>Business School</p>
                             </div>
                             <div className="partner-logo">
                                 <img src={imperial} alt="Imperial" />
-                                <p>Imperial</p>
                             </div>
                             <div className="partner-logo">
                                 <img src={sheridan} alt="Sheridan" />
-                                <p>Sheridan</p>
                             </div>
                             <div className="partner-logo">
                                 <img src={TurkUni} alt="TurkUni" />
-                                <p>TurkUni</p>
                             </div>
                             <div className="partner-logo">
                                 <img src={cimt} alt="cimt" />
-                                <p>Cimt</p>
                             </div>
                             <div className="partner-logo">
                                 <img src={canadaCollege} alt="Canada College" />
-                                <p>Canada College</p>
+                            </div>
+                            {/* Duplicated logos for seamless looping */}
+                            <div className="partner-logo">
+                                <img src={eurospeak} alt="EUROSPEAK" />
+                            </div>
+                            <div className="partner-logo">
+                                <img src={businessSchool} alt="Business School" />
+                            </div>
+                            <div className="partner-logo">
+                                <img src={imperial} alt="Imperial" />
+                            </div>
+                            <div className="partner-logo">
+                                <img src={sheridan} alt="Sheridan" />
+                            </div>
+                            <div className="partner-logo">
+                                <img src={TurkUni} alt="TurkUni" />
+                            </div>
+                            <div className="partner-logo">
+                                <img src={cimt} alt="CIMT" />
+                            </div>
+                            <div className="partner-logo">
+                                <img src={canadaCollege} alt="Canada College" />
                             </div>
 
                         </div>
                     </div>
                 </div>
             </section>
+            <section className="trusted-partner-section">
+                <div className="trusted-partner-overlay">
+                    <div className="trusted-partner-content">
+                        <h2 className="trusted-partner-heading">
+                            Your Trusted Partner in<br />
+                            <span>International Education</span>
+                        </h2>
+                        <p className="trusted-partner-text">
+                            Discover a universe of educational opportunities with our expert support.
+                        </p>
+                        <button className="trusted-partner-button">
+                            Contact us
+                        </button>
+                    </div>
+                </div>
+            </section>
 
-            {/* Content Sections */}
-            <div className="content-section">
-                <h2>Our Services</h2>
-                <p>Discover our comprehensive visa and immigration services...</p>
-            </div>
 
-            <div className="content-section">
-                <h2>Why Choose Us?</h2>
-                <p>With years of experience and high success rates...</p>
-            </div>
         </div>
     );
 };

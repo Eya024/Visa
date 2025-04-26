@@ -574,3 +574,246 @@
       grid-template-columns: 1fr;
     }
   }
+
+
+
+  /* Partners Section - Improved Infinite Carousel */
+/* Infinite Logo Carousel */
+.partners-section {
+  padding: 6rem 0;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.partners-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  color: #BD1A1A;
+  margin-bottom: 1rem;
+}
+
+.section-divider {
+  width: 100px;
+  height: 3px;
+  background-color: #BD1A1A;
+  margin: 0 auto;
+}
+
+.partners-carousel {
+  height: 180px;
+  margin: 50px auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.partners-carousel::before,
+.partners-carousel::after {
+  content: "";
+  height: 180px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+
+
+
+.partners-track {
+  animation: scroll 40s linear infinite;
+  display: flex;
+  align-items: center;
+  width: calc(220px * 14); /* Double the items for seamless looping */
+}
+
+.partner-logo {
+  height: 130px;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+}
+
+.partner-logo img {
+  height: auto;
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-220px * 7))} /* Move by half the width */
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2.4rem;
+  }
+  
+  .partners-carousel {
+    height: 150px;
+  }
+  
+  .partners-carousel::before,
+  .partners-carousel::after {
+    height: 150px;
+  }
+  
+  .partner-logo {
+    width: 180px;
+    height: 110px;
+  }
+  
+  @keyframes scroll {
+    100% { transform: translateX(calc(-180px * 7))}
+  }
+}
+
+@media (max-width: 768px) {
+  .partners-section {
+    padding: 4rem 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .partners-carousel {
+    height: 120px;
+    margin: 30px auto;
+  }
+  
+  .partners-carousel::before,
+  .partners-carousel::after {
+    height: 120px;
+    width: 100px;
+  }
+  
+  .partner-logo {
+    width: 150px;
+    height: 90px;
+    padding: 0 1rem;
+  }
+  
+  @keyframes scroll {
+    100% { transform: translateX(calc(-150px * 7))}
+  }
+}
+
+/* Trusted Partner Section */
+.trusted-partner-section {
+  position: relative;
+  height: 500px;
+  background-image: url('../assets/images/canada.jpg'); /* Add your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.trusted-partner-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trusted-partner-content {
+  max-width: 800px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.trusted-partner-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.trusted-partner-heading span {
+  color: #ffffff;
+}
+
+.trusted-partner-text {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.trusted-partner-button {
+  position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    margin-top: 8px;
+    background: linear-gradient(135deg, #BD1A1A, #A31A1A);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(189, 26, 26, 0.3), 0 0 0 rgba(189, 26, 26, 0);
+}
+
+
+.trusted-partner-button:hover {
+  transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(228, 37, 12, 0.3), 0 0 0 2px rgba(189, 26, 26, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .trusted-partner-section {
+    height: 400px;
+  }
+  
+  .trusted-partner-heading {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .trusted-partner-section {
+    height: 350px;
+  }
+  
+  .trusted-partner-heading {
+    font-size: 2rem;
+  }
+  
+  .trusted-partner-text {
+    font-size: 1.1rem;
+  }
+  
+  .trusted-partner-button {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+}
