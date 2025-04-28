@@ -1,0 +1,138 @@
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.services-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #000000;
+  font-size: 2.5rem;
+}
+
+.services-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.service-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.service-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Specific class for left image layout */
+.service-content-wrapper.image-left {
+  flex-direction: row;
+}
+
+.service-text {
+  flex: 1;
+}
+
+.service-image {
+  flex: 1;
+  min-height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-image img {
+  transform: scale(1.05);
+}
+
+.service-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #BD1A1A;
+  margin-bottom: 0.5rem;
+}
+
+.service-name {
+  font-size: 1.5rem;
+  color: #000000;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.service-description {
+  color: #7f8c8d;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.service-features {
+  margin-bottom: 2rem;
+}
+
+.service-features p {
+  margin-bottom: 0.5rem;
+  color: #34495e;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-button {
+  background-color: #BD1A1A;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+}
+
+.contact-button:hover {
+  background-color: #8a1a1a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .service-content-wrapper,
+  .service-content-wrapper.image-left {
+    flex-direction: column;
+  }
+  
+  .service-image {
+    width: 100%;
+    min-height: 200px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
