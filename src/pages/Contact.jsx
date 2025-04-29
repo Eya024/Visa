@@ -7,12 +7,14 @@ const Contact = () => {
       {/* Admission Section */}
       <div className="admission-container">
         <div className="admission-content">
-          <h1 className="admission-title">ADMISSION</h1>
-          <h2 className="admission-subtitle">Ready to enroll?</h2>
-          <p className="admission-text">We hope to meet you soon.</p>
+          <h1 className="admission-title">Contact</h1>
+          <h2 className="admission-subtitle">Have questions about our programs?
+          </h2>
+          
           <p className="admission-description">
-            Elegant Services is here to help you study in Canada. Follow these steps to begin your journey
-          </p>
+          Elegant Services operates from four strategically located branches. Please contact us with any questions or inquiries.
+
+</p>
           <button className="admission-button">Get Started</button>
         </div>
       </div>
