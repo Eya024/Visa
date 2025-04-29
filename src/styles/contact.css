@@ -1,0 +1,253 @@
+.admission-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    background-color: #f8f8f8;
+    border-radius: 15px;
+}
+
+.admission-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.admission-title {
+    font-size: 1.5rem;
+    color: #BD1A1A;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: left;
+
+}
+
+.admission-subtitle {
+    font-size: 2.5rem;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: left;
+
+}
+
+.admission-text {
+    font-size: 1.5rem;
+    color: #555555;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    text-align: left;
+
+}
+
+.admission-description {
+    font-size: 1.25rem;
+    color: #666666;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    max-width: 700px;
+    text-align: left;
+
+}
+
+.admission-button {
+    background-color: #BD1A1A;
+    color: white;
+    border: none;
+    padding: 1.25rem 3rem;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.admission-button:hover {
+    background-color: #8a1a1a;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .admission-container {
+        padding: 4rem 2rem;
+    }
+
+    .admission-title {
+        font-size: 3rem;
+    }
+
+    .admission-subtitle {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .admission-container {
+        padding: 3rem 1.5rem;
+    }
+
+    .admission-title {
+        font-size: 2.5rem;
+    }
+
+    .admission-subtitle {
+        font-size: 1.75rem;
+    }
+
+    .admission-text {
+        font-size: 1.25rem;
+    }
+
+    .admission-description {
+        font-size: 1.1rem;
+    }
+
+    .admission-button {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .admission-title {
+        font-size: 2rem;
+    }
+
+    .admission-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .admission-text {
+        font-size: 1.1rem;
+    }
+
+    .admission-description {
+        font-size: 1rem;
+    }
+}
+
+
+.contact-form-container {
+    max-width: 600px;
+    margin: 4rem auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.contact-form label {
+    font-weight: 600;
+    color: #333;
+}
+
+.contact-form label span {
+    color: #BD1A1A;
+    margin-left: 0.25rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #BD1A1A;
+}
+
+.contact-submit {
+    background-color: #BD1A1A;
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+}
+
+.contact-submit:hover {
+    background-color: #8a1a1a;
+}
+
+.branch-container {
+    max-width: 1200px;
+    margin: 5rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: flex-start;
+    padding: 0 2rem;
+}
+
+.branch-info {
+    flex: 1;
+    min-width: 280px;
+}
+
+.branch-title {
+    color: #BD1A1A;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.branch-detail {
+    margin-bottom: 1.5rem;
+}
+
+.branch-detail h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.branch-detail p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0.2rem 0;
+}
+
+.branch-detail hr {
+    border: none;
+    border-top: 2px solid #BD1A1A;
+    width: 15rem; /* or another fixed width like 80px */
+    margin: 0.5rem 0; /* adds spacing around the line */
+}
+
+
+.branch-map {
+    flex: 1;
+    min-width: 300px;
+}
+
+@media (max-width: 768px) {
+    .branch-container {
+        flex-direction: column;
+    }
+
+    .branch-map iframe {
+        width: 100%;
+        height: 250px;
+    }
+}

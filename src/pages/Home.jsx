@@ -41,12 +41,12 @@ const Home = () => {
                         <div className="tagline">EXPLORE. CONNECT. SUCCEED</div>
                         <h1 className="main-heading">A trusted and supportive pathway for international students</h1>
                         <p className="mission-statement">Our mission is to provide a safe and joyful journey for your academic pursuits.</p>
-                        <button className="cta-button">
+                        <Link to="/contact" className="cta-button">
                             <span className="button-text">Contact us</span>
                             <span className="button-icon">
                                 <FaArrowRight />
                             </span>
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -60,8 +60,8 @@ const Home = () => {
                     <div className="about-content">
                         <div className="about-subtitle">ABOUT US</div>
                         <h2 className="about-heading">We are here to help students achieve their academic dreams</h2>
-                        
-                       
+
+
                         <button className="about-button">
                             Know more about us
                         </button>
