@@ -1,0 +1,254 @@
+.admission-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    background-color: #f8f8f8;
+    border-radius: 15px;
+}
+
+.admission-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.admission-title {
+    font-size: 1.5rem;
+    color: #BD1A1A;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: left;
+
+}
+
+.admission-subtitle {
+    font-size: 2.5rem;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: left;
+
+}
+
+.admission-text {
+    font-size: 1.5rem;
+    color: #555555;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    text-align: left;
+
+}
+
+.admission-description {
+    font-size: 1.25rem;
+    color: #666666;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    max-width: 700px;
+    text-align: left;
+
+}
+
+.admission-button {
+    background-color: #BD1A1A;
+    color: white;
+    border: none;
+    padding: 1.25rem 3rem;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.admission-button:hover {
+    background-color: #8a1a1a;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .admission-container {
+        padding: 4rem 2rem;
+    }
+
+    .admission-title {
+        font-size: 3rem;
+    }
+
+    .admission-subtitle {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .admission-container {
+        padding: 3rem 1.5rem;
+    }
+
+    .admission-title {
+        font-size: 2.5rem;
+    }
+
+    .admission-subtitle {
+        font-size: 1.75rem;
+    }
+
+    .admission-text {
+        font-size: 1.25rem;
+    }
+
+    .admission-description {
+        font-size: 1.1rem;
+    }
+
+    .admission-button {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .admission-title {
+        font-size: 2rem;
+    }
+
+    .admission-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .admission-text {
+        font-size: 1.1rem;
+    }
+
+    .admission-description {
+        font-size: 1rem;
+    }
+}
+
+/* Process Section Styles */
+.process-container {
+    max-width: 1400px;
+    margin: 6rem auto;
+    padding: 0 2rem;
+}
+
+.process-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.process-title {
+    font-size: 2.5rem;
+    color: #BD1A1A;
+    margin-bottom: 4rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.process-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.process-step {
+    flex: 1 1 250px;
+    max-width: 300px;
+    border: 1px solid #BD1A1A;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+}
+
+.step-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #BD1A1A;
+    margin-bottom: 1rem;
+}
+
+.step-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.step-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+
+
+.step-content {
+    flex: 1;
+}
+
+
+/* Responsive adjustments for Process Section */
+@media (max-width: 992px) {
+    .process-title {
+        font-size: 2.25rem;
+        margin-bottom: 3rem;
+    }
+
+    .step-number {
+        font-size: 2.5rem;
+        min-width: 70px;
+    }
+
+    .step-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .process-container {
+        margin: 4rem auto;
+        padding: 0 1.5rem;
+    }
+
+    .process-title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .process-step {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .step-number {
+        font-size: 2rem;
+    }
+
+    .step-title {
+        font-size: 1.25rem;
+    }
+
+    .step-description {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .process-title {
+        font-size: 1.75rem;
+    }
+
+    .step-number {
+        font-size: 1.75rem;
+    }
+}

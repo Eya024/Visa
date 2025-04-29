@@ -14,12 +14,12 @@ const Services = () => {
             <div className="service-text">
               <div className="service-number">01</div>
               <h2 className="service-name">Academic Counseling</h2>
-              <p className="service-description">
+              <p className="service-description1">
                 Personalized guidance to help students choose programs and institutions that align with their goals.
               </p>
               <div className="service-features">
-                <p>✓ Goal Alignment</p>
-                <p>✓ Interest Assessment</p>
+                <p>Goal Alignment</p>
+                <p>Interest Assessment</p>
               </div>
               <button className="contact-button">Contact us</button>
             </div>
@@ -38,12 +38,12 @@ const Services = () => {
             <div className="service-text">
               <div className="service-number">02</div>
               <h2 className="service-name">University and College Applications</h2>
-              <p className="service-description">
+              <p className="service-description1">
                 Assistance in preparing and submitting successful applications to partner institutions.
               </p>
               <div className="service-features">
-                <p>✓ Reputation and Ranking</p>
-                <p>✓ Cultural Fit</p>
+                <p>Reputation and Ranking</p>
+                <p>Cultural Fit</p>
               </div>
               <button className="contact-button">Contact us</button>
             </div>
@@ -56,12 +56,12 @@ const Services = () => {
             <div className="service-text">
               <div className="service-number">03</div>
               <h2 className="service-name">Visa Application Support</h2>
-              <p className="service-description">
+              <p className="service-description1">
                 Expert guidance through the entire visa application process to ensure approval.
               </p>
               <div className="service-features">
-                <p>✓ Document Preparation</p>
-                <p>✓ Interview Coaching</p>
+                <p>Document Preparation</p>
+                <p>Interview Coaching</p>
               </div>
               <button className="contact-button">Contact us</button>
             </div>
@@ -80,12 +80,12 @@ const Services = () => {
             <div className="service-text">
               <div className="service-number">04</div>
               <h2 className="service-name">Test Preparation</h2>
-              <p className="service-description">
+              <p className="service-description1">
                 Comprehensive training for language proficiency and academic entrance exams.
               </p>
               <div className="service-features">
-                <p>✓ IELTS/TOEFL Training</p>
-                <p>✓ SAT/ACT Preparation</p>
+                <p>IELTS/TOEFL Training</p>
+                <p>SAT/ACT Preparation</p>
               </div>
               <button className="contact-button">Contact us</button>
             </div>
@@ -98,12 +98,12 @@ const Services = () => {
             <div className="service-text">
               <div className="service-number">05</div>
               <h2 className="service-name">Interview Preparation</h2>
-              <p className="service-description">
+              <p className="service-description1">
                 Specialized coaching to ace university admission and visa interviews.
               </p>
               <div className="service-features">
-                <p>✓ Mock Interviews</p>
-                <p>✓ Feedback Sessions</p>
+                <p>Mock Interviews</p>
+                <p>Feedback Sessions</p>
               </div>
               <button className="contact-button">Contact us</button>
             </div>
