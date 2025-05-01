@@ -12,13 +12,17 @@ import PrivateRoutes from './auth/PrivateRoutes';
 import StudentDashboard from './pages/student/StudentDashboard';
 import NotificationsPage from './pages/student/NotificationsPage';
 import DashboardHome from './pages/student/DashboardHome';
+import Inscription from './auth/Inscription';
 
 
 function AppWrapper() {
   const location = useLocation();
 
   // Only show header/footer if NOT on a /studentDashboard route
-  const hideHeaderFooter = location.pathname.startsWith('/studentDashboard');
+  const hideHeaderFooter =
+    location.pathname.startsWith('/studentDashboard') ||
+    location.pathname === '/login' ||
+    location.pathname === '/inscription';
 
   return (
     <>
@@ -32,6 +36,8 @@ function AppWrapper() {
         <Route path="/admission" element={<Admission />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/inscription" element={<Inscription />} />
+
         <Route path="/client" element={
           <PrivateRoutes>
             <Client />

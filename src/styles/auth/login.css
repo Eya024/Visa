@@ -1,0 +1,132 @@
+.login-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(270deg, #EBDFDF, #DB7272, #CF5555);
+    background-size: 800% 800%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+
+.login-card {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-logo {
+    width: 50px;
+    margin-bottom: 1rem;
+}
+
+.login-title {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+}
+
+.forgot-link {
+    color: #b32425;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.login-btn {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background-color: #b32425;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #690b0b;
+}
+
+.signup-text {
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+}
+
+.signup-text a {
+    color: #b32425;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.input-error {
+    border-color: #b32425;
+    background-color: #fff3f3;
+}
+
+.error-text {
+    color: #b32425;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.login-btn:disabled {
+    background-color: #d3a7a7;
+    cursor: not-allowed;
+}
+
