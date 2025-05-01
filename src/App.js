@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
-import Footer from './components/Footer'; // Import the Footer component
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -13,11 +13,17 @@ import StudentDashboard from './pages/student/StudentDashboard';
 import NotificationsPage from './pages/student/NotificationsPage';
 import DashboardHome from './pages/student/DashboardHome';
 
-function App() {
+
+function AppWrapper() {
+  const location = useLocation();
+
+  // Only show header/footer if NOT on a /studentDashboard route
+  const hideHeaderFooter = location.pathname.startsWith('/studentDashboard');
 
   return (
-    <Router>
-      <Header />
+    <>
+      {!hideHeaderFooter && <Header />}
+
       <Routes>
         <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/home" element={<Home />} />
@@ -36,7 +42,16 @@ function App() {
           <Route path="notifications" element={<NotificationsPage />} />
         </Route>
       </Routes>
-      <Footer /> {/* Add the Footer component here */}
+
+      {!hideHeaderFooter && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppWrapper />
     </Router>
   );
 }

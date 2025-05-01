@@ -2,6 +2,7 @@ body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background-color: #f8f9fc;
+    padding-top: 0px;
 }
 
 .dashboard {
@@ -9,6 +10,20 @@ body {
     position: relative;
     flex-direction: row;
 }
+.sidebar-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+}
+
+.sidebar-logo img {
+    max-width: 80px;
+    height: auto;
+}
+
 
 .menu-icon {
     display: none;
@@ -417,4 +432,20 @@ body {
     .menu-icon .bar {
         background-color: #951111;
     }
+}
+
+.dashboard-header {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: linear-gradient(to bottom, #f8f9fc, #ffffff);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 10;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+    font-weight: 600;
 }

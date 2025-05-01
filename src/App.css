@@ -45,9 +45,7 @@ body:not(.home-page) {
   padding-top: 120px;
 }
 
-.with-header-padding {
-  padding-top: 120px; /* so other pages have space under the header */
-}
+
 
 .home-page {
   padding-top: 0; /* no padding for home page so the video and header overlap */

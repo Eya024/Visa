@@ -14,9 +14,7 @@ code {
     monospace;
 }
 
-.with-header-padding {
-  padding-top: 120px; /* only for pages that are NOT home */
-}
+
 
 .home-page {
   padding-top: 0; /* no padding on home so video can go full screen */
