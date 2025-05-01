@@ -10,6 +10,8 @@ import Login from './auth/Login';
 import Client from './pages/Client';
 import PrivateRoutes from './auth/PrivateRoutes';
 import StudentDashboard from './pages/student/StudentDashboard';
+import NotificationsPage from './pages/student/NotificationsPage';
+import DashboardHome from './pages/student/DashboardHome';
 
 function App() {
 
@@ -29,8 +31,10 @@ function App() {
             <Client />
           </PrivateRoutes>
         } />
-        <Route path="/studentDashboard" element={<StudentDashboard />} />
-
+        <Route path="/studentDashboard" element={<StudentDashboard />}>
+          <Route index element={<DashboardHome />} />
+          <Route path="notifications" element={<NotificationsPage />} />
+        </Route>
       </Routes>
       <Footer /> {/* Add the Footer component here */}
     </Router>
