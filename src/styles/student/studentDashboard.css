@@ -1,0 +1,357 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fc;
+}
+
+.dashboard {
+    display: flex;
+    position: relative;
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    padding: 15px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    padding: 2rem 1rem;
+    border-right: 1px solid #eee;
+    min-height: 100vh;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+.section {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #888;
+    margin: 1.5rem 0 0.5rem;
+}
+
+/* Add these styles to your existing CSS */
+.nav-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.nav-button.active {
+    background-color: #951111;
+    color: #fff;
+}
+
+.nav-button .icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1); /* This makes the icon white when button is active */
+}
+
+.nav-button:not(.active) .icon {
+    filter: none; /* Reset filter for non-active state */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 2rem;
+    text-align: center;
+}
+
+.sidebar li {
+    padding: 0.5rem 0;
+    cursor: pointer;
+    color: #444;
+    margin: 1rem;
+}
+
+.sidebar li:hover {
+    color: #BD1A1A;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    color: #444;
+}
+
+.sidebar li img.icon {
+    width: 20px;
+    height: 20px;
+}
+
+
+.main {
+    flex: 1;
+    padding: 2rem;
+}
+
+.content {
+    display: flex;
+    gap: 2rem;
+}
+
+.revenue-section {
+    flex: 2;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.product-table th,
+.product-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.product-info {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.product-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #eee;
+}
+
+.avatar-1 { background: url('https://via.placeholder.com/40/FF6B6B') center/cover; }
+.avatar-2 { background: url('https://via.placeholder.com/40/FCCB6B') center/cover; }
+.avatar-3 { background: url('https://via.placeholder.com/40/6BCB77') center/cover; }
+.avatar-4 { background: url('https://via.placeholder.com/40/6B95CB') center/cover; }
+
+.badge {
+    padding: 0.3rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge.low { background: #d4f4dd; color: #218838; }
+.badge.medium { background: #fff3cd; color: #856404; }
+.badge.high { background: #f8d7da; color: #721c24; }
+.badge.very-high { background: #ccf2f4; color: #0c5460; }
+
+.activity-section {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.activity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.activity-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.activity-list .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-top: 0.4rem;
+}
+
+.dot.purple { background-color: #6c5ce7; }
+.dot.yellow { background-color: #f1c40f; }
+.dot.teal { background-color: #1abc9c; }
+.dot.pink { background-color: #ff6b81; }
+
+.activity-list small {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.activity-list p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+    
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        z-index: 999;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+    
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    
+    .main {
+        padding-top: 4rem;
+    }
+    
+    .content {
+        flex-direction: column;
+    }
+}
+
+.blog-section {
+    margin-top: 3rem;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.blog-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.blog-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: flex-start;
+}
+
+.blog-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    width: calc(33.33% - 1.33rem); /* 3 cards per row with gap */
+    min-width: 280px;
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 992px) {
+    .blog-card {
+        width: calc(50% - 1rem); /* 2 per row on medium */
+    }
+}
+
+@media (max-width: 576px) {
+    .blog-card {
+        width: 100%; /* 1 per row on small */
+    }
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-img {
+    position: relative;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+}
+
+.blog-img .read-time {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.blog-img .avatar {
+    position: absolute;
+    bottom: -20px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background: #fff;
+}
+
+.blog-body {
+    padding: 2rem 1rem 1rem 1rem;
+}
+
+.blog-body .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    background: #f0f2f5;
+    color: #333;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.blog-body h4 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: #111;
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+/* Full notifications page styling */
+.activity-section.full {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+/* Highlight sidebar list item */
+.sidebar li.active {
+    color: #fff;
+    background-color: #951111;
+    border-radius: 8px;
+    padding-left: 0.5rem;
+}

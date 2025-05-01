@@ -9,28 +9,31 @@ import Contact from './pages/Contact';
 import Login from './auth/Login';
 import Client from './pages/Client';
 import PrivateRoutes from './auth/PrivateRoutes';
+import StudentDashboard from './pages/student/StudentDashboard';
 
 function App() {
-  
+
   return (
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Navigate to="/home" replace />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/admission" element={<Admission />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/client" element={
-            <PrivateRoutes>
-              <Client />
-            </PrivateRoutes>
-          } />
-        </Routes>
-        <Footer /> {/* Add the Footer component here */}
-      </Router>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" replace />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/admission" element={<Admission />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/client" element={
+          <PrivateRoutes>
+            <Client />
+          </PrivateRoutes>
+        } />
+        <Route path="/studentDashboard" element={<StudentDashboard />} />
+
+      </Routes>
+      <Footer /> {/* Add the Footer component here */}
+    </Router>
   );
 }
 
