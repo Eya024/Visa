@@ -30,7 +30,9 @@ const Login = () => {
     return (
         <div className="login-wrapper">
             <div className="login-card">
-                <img src={logo} alt="MatDash Logo" className="login-logo" />
+                <Link to="/home">
+                    <img src={logo} alt="MatDash Logo" className="login-logo" style={{ cursor: 'pointer' }} />
+                </Link>
                 <h2 className="login-title">Sign In on MatDash</h2>
                 <form onSubmit={handleSubmit} noValidate>
                     <label>Username</label>

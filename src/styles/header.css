@@ -227,3 +227,61 @@
       top: 60px;
     }
   }
+
+/* Auth button styles */
+.auth-container {
+  margin-left: auto; /* Pushes it to the right */
+  padding-right: 20px;
+}
+
+.auth-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px 15px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.auth-button:hover {
+  color: #BD1A1A; /* Match your hover color */
+}
+
+.auth-button .nav-link-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #BD1A1A; /* Match your underline color */
+  transition: width 0.3s ease;
+}
+
+.auth-button:hover .nav-link-underline {
+  width: 100%;
+}
+
+/* For scrolled state */
+.header-scrolled .auth-button {
+  color: #333; /* Match your scrolled text color */
+}
+
+.header-scrolled .auth-button:hover {
+  color: #BD1A1A; /* Match your hover color */
+}
+
+/* Mobile auth button */
+.mobile-nav-item button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+  width: 100%;
+  text-align: left;
+  padding: 12px 20px;
+  cursor: pointer;
+}
