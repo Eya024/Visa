@@ -3,6 +3,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/auth/login.css';
 import logo from '../assets/images/logo.png';
+import { checkLoggedIn } from '../utils/auth';
+
 
 const Inscription = () => {
     const [formData, setFormData] = useState({
@@ -75,14 +77,72 @@ const Inscription = () => {
     };
 
 
+    useEffect(() => {
+        const redirectIfLoggedIn = async () => {
+            const isLoggedIn = await checkLoggedIn();
+            if (isLoggedIn) {
+                navigate('/studentDashboard');
+            }
+        };
+        redirectIfLoggedIn();
+    }, [navigate]);
 
 
-    const handleSubmit = (e) => {
+
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (isFormValid) {
-            navigate('/studentDashboard');
+        if (!isFormValid) return;
+
+        try {
+            const response = await fetch('http://localhost:8000/api/auth/register/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include', // Important if you're using session-based auth
+                body: JSON.stringify({
+                    username: formData.name, // This maps to `username` in Django
+                    email: formData.email,
+                    password: formData.password,
+                    role: 'student' // or 'admin' or 'advisor' depending on your use case
+                })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('User registered:', data);
+
+                // Save the registration response data to localStorage
+                localStorage.setItem('userId', data.id);
+                localStorage.setItem('userMessage', data.message);
+                localStorage.setItem('userName', formData.name);
+                localStorage.setItem('userEmail', formData.email);
+                localStorage.setItem('userPhone', formData.phone);
+
+                // Optionally, you can check the localStorage directly in the console:
+                console.log(localStorage.getItem('userId'));  // Should log the ID value
+                console.log(localStorage.getItem('userMessage'));  // Should log the message
+                console.log(localStorage.getItem('userName'));  // Should log the user's name
+                console.log(localStorage.getItem('userEmail'));  // Should log the user's email
+                console.log(localStorage.getItem('userPhone'));  // Should log the user's phone number
+
+                // After saving to localStorage, navigate to the dashboard
+                navigate('/studentDashboard');
+            } else {
+                const errorText = await response.text();
+                setErrors({ api: errorText });
+                console.error('Registration failed:', errorText);
+            }
+        } catch (error) {
+            console.error('Error during registration:', error);
+            setErrors({ api: 'Network or server error' });
         }
     };
+
+
+
 
 
 

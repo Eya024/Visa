@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/auth/login.css';
 import logo from '../assets/images/logo.png';
+import { checkLoggedIn } from '../utils/auth';
+
+
+
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -16,16 +20,51 @@ const Login = () => {
         return newErrors;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = validate();
         setErrors(validationErrors);
-
+    
         if (Object.keys(validationErrors).length === 0) {
-            // Authentication logic here
-            navigate('/studentDashboard');
+            try {
+                const res = await fetch('http://localhost:8000/api/auth/login/', {
+                    method: 'POST',
+                    credentials: 'include', // IMPORTANT: include cookies
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username,
+                        password,
+                    }),
+                });
+    
+                if (!res.ok) {
+                    const errorData = await res.json();
+                    setErrors({ form: errorData.error || 'Login failed' });
+                    return;
+                }
+    
+                // If login is successful, redirect
+                navigate('/studentDashboard');
+    
+            } catch (err) {
+                console.error('Login error:', err);
+                setErrors({ form: 'Something went wrong. Please try again.' });
+            }
         }
     };
+    
+    useEffect(() => {
+        const redirectIfLoggedIn = async () => {
+            const isLoggedIn = await checkLoggedIn();
+            if (isLoggedIn) {
+                navigate('/studentDashboard');
+            }
+        };
+        redirectIfLoggedIn();
+    }, [navigate]);
+
 
     return (
         <div className="login-wrapper">
