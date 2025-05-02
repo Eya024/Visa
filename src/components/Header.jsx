@@ -3,6 +3,22 @@ import { Link, useNavigate } from 'react-router-dom'; // Add useNavigate
 import '../styles/header.css';
 import logo from '../assets/images/logo.png';
 
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
+
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -15,44 +31,80 @@ const Header = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-
+  
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
       if (window.innerWidth >= 768) {
         setMenuOpen(false);
       }
     };
-
-    // Check login status (you might want to replace this with actual auth check)
-    const checkLoginStatus = () => {
-      const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
-      setIsLoggedIn(loggedIn);
+  
+    const checkLoginStatus = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/auth/me/', {
+          method: 'GET',
+          credentials: 'include',
+        });
+    
+        // Log the response to inspect
+        const text = await response.text();
+        console.log(text);
+    
+        const data = JSON.parse(text); // Try parsing the text manually
+    
+        if (data && data.username) {
+          setIsLoggedIn(true);
+        } else {
+          setIsLoggedIn(false);
+        }
+        
+      } catch (error) {
+        console.error('Error checking login status:', error);
+        setIsLoggedIn(false);
+      }
     };
-
+    
+  
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
     checkLoginStatus();
-
+  
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const handleAuthClick = () => {
+  const handleAuthClick = async () => {
     if (isLoggedIn) {
-      // Handle logout
-      localStorage.removeItem('isLoggedIn');
-      setIsLoggedIn(false);
-      // Redirect to home after logout if needed
-      navigate('/');
+      try {
+        const response = await fetch('http://localhost:8000/api/auth/logout/', {
+          method: 'POST',
+          credentials: 'include', // Important to include session cookies
+          headers: {
+            'X-CSRFToken': getCookie('csrftoken') // if using CSRF
+          }
+        });
+  
+        if (response.ok) {
+          localStorage.setItem('isLoggedIn', 'false'); // Make sure to update this
+          setIsLoggedIn(false);
+          navigate('/');
+        } else {
+          console.error('Logout failed');
+        }
+      } catch (error) {
+        console.error('Error during logout:', error);
+      }
     }
-    // No else needed since we'll use Link for login
   };
+  
+
 
   const navItems = [
     { to: "/", label: "Home" },
@@ -91,13 +143,18 @@ const Header = () => {
             {/* Updated Auth section */}
             <div className="auth-container">
               {isLoggedIn ? (
-                <button
-                  className={`auth-button ${scrolled ? 'scrolled' : ''}`}
-                  onClick={handleAuthClick}
-                >
-                  Logout
-                  <span className="nav-link-underline"></span>
-                </button>
+                <Link
+                to="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleAuthClick();
+                }}
+                className={`auth-button ${scrolled ? 'scrolled' : ''}`}
+              >
+                Logout
+                <span className="nav-link-underline"></span>
+              </Link>
+              
               ) : (
                 <Link
                   to="/login"
