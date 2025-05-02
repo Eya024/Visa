@@ -13,12 +13,11 @@ import StudentDashboard from './pages/student/StudentDashboard';
 import NotificationsPage from './pages/student/NotificationsPage';
 import DashboardHome from './pages/student/DashboardHome';
 import Inscription from './auth/Inscription';
-
+import ApplicationPage from './pages/student/ApplicationPage'; // ✅ Make sure this is imported
 
 function AppWrapper() {
   const location = useLocation();
 
-  // Only show header/footer if NOT on a /studentDashboard route
   const hideHeaderFooter =
     location.pathname.startsWith('/studentDashboard') ||
     location.pathname === '/login' ||
@@ -43,9 +42,12 @@ function AppWrapper() {
             <Client />
           </PrivateRoutes>
         } />
+
+        {/* Student Dashboard nested routes */}
         <Route path="/studentDashboard" element={<StudentDashboard />}>
           <Route index element={<DashboardHome />} />
           <Route path="notifications" element={<NotificationsPage />} />
+          <Route path="application" element={<ApplicationPage />} /> 
         </Route>
       </Routes>
 

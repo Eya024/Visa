@@ -50,9 +50,12 @@ const StudentDashboard = () => {
                                 <img src={notificationIcon} alt="Notifications" className="icon" /> Notifications
                             </Link>
                         </li>
-                        <li>
-                            <img src={applicationIcon} alt="Application" className="icon" /> Application
+                        <li className={isActive('/studentDashboard/application') ? 'active' : ''}>
+                            <Link to="/studentDashboard/application">
+                                <img src={applicationIcon} alt="Application" className="icon" /> Application
+                            </Link>
                         </li>
+
                         <li>
                             <img src={appointmentIcon} alt="Appointment" className="icon" /> Appointment
                         </li>
