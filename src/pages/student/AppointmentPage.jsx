@@ -1,83 +1,128 @@
-import React, { useState, useEffect } from 'react';  // add useEffect here
+import React, { useState, useEffect } from 'react';
 import '../../styles/student/studentDashboard.css';
-import { checkLoggedIn } from '../../utils/auth'; // adjust path if needed
-
+import { checkLoggedIn } from '../../utils/auth';
 
 const AppointmentPage = () => {
-    const [studentId, setStudentId] = useState(null);  // add this state
-
+    const [studentId, setStudentId] = useState(null);
+    const [appointment, setAppointment] = useState(null);
+    const [appointmentId, setAppointmentId] = useState(null);
+    const [isEditing, setIsEditing] = useState(true);
     const [availabilities, setAvailabilities] = useState([]);
     const [day, setDay] = useState('');
     const [time, setTime] = useState('');
     const [reason, setReason] = useState('');
 
+
     useEffect(() => {
         checkLoggedIn().then(data => {
-            console.log('checkLoggedIn returned:', data);
             if (data?.id) {
                 setStudentId(data.id);
             }
-        });
+        }
+
+        );
     }, []);
 
-    console.log('studentId:', studentId); // to check current state on every render
+    useEffect(() => {
+        if (!studentId) return;
 
-
+        fetch(`http://localhost:8000/api/appointments/student/${studentId}/`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.length > 0) {
+                    const app = data[0];
+                    setAppointment({ ...app, availabilities: app.availabilities || [] }); // ✅ SAFEGUARD
+                    setAppointmentId(app.id);
+                    setIsEditing(false);
+                    setReason(app.reason);
+                    setAvailabilities(app.availabilities);
+                } else {
+                    setAppointment(null);
+                    setIsEditing(true);
+                }
+            })
+            .catch(console.error);
+    }, [studentId]);
 
     const addAvailability = () => {
         if (!day || !time) return;
-        const newEntry = { day, time };
-        setAvailabilities([...availabilities, newEntry]);
+        setAvailabilities([...availabilities, { day, time }]);
         setDay('');
         setTime('');
     };
 
-
-
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (availabilities.length === 0) {
-            alert("Please add at least one availability.");
+        if (!studentId || availabilities.length === 0) {
+            alert("Please fill in required fields.");
             return;
         }
 
-        if (!studentId) {
-            alert("Student not identified. Please login.");
-            return;
-        }
+        const payload = { student_id: studentId, availabilities, reason };
+        const url = isEditing && appointmentId
+            ? `http://localhost:8000/api/appointments/update/${appointmentId}/`
+            : 'http://localhost:8000/api/appointments/create/';
+        const method = isEditing && appointmentId ? 'PUT' : 'POST';
 
-        // include studentId here before sending
-        const combinedInfo = {
-            student_id: studentId,
-            availabilities,
-            reason,
-        };
-
-        fetch('http://localhost:8000/api/appointments/create/', {
-            method: 'POST',
+        fetch(url, {
+            method,
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(combinedInfo),
+            body: JSON.stringify(payload),
         })
             .then(res => res.json())
             .then(data => {
-                alert('Appointment submitted!');
-                setAvailabilities([]);
-                setReason('');
+                alert(isEditing ? 'Appointment updated!' : 'Appointment submitted!');
+                setAppointment(data);
+                setAppointmentId(data.id);
+                setIsEditing(false);
             })
-            .catch(err => console.error(err));
+            .catch(console.error);
     };
 
-    if (!studentId) {
-        return <p>Loading user info, please wait...</p>;
+    const handleDelete = () => {
+        if (!appointmentId) return;
+        fetch(`http://localhost:8000/api/appointments/update/${appointmentId}/`, {
+            method: 'DELETE',
+        })
+            .then(() => {
+                alert('Appointment deleted');
+                setAppointment(null);
+                setAppointmentId(null);
+                setIsEditing(true);
+                setReason('');
+                setAvailabilities([]);
+            })
+            .catch(console.error);
+    };
+
+    if (!studentId) return <p>Loading user info, please wait...</p>;
+
+    if (!isEditing && appointment) {
+        return (
+            <div className="activity-section full">
+                <h2 className="section-title">Your Appointment</h2>
+                <div className="appointment-summary">
+                    <p><strong>Reason:</strong> {appointment.reason}</p>
+                    <p><strong>Status:</strong> {appointment.status}</p>
+                    <p><strong>Availabilities:</strong></p>
+                    <ul>
+                        {Array.isArray(appointment?.availabilities) && appointment.availabilities.map((a, i) => (
+                            <li key={i}>{a.day} at {a.time}</li>
+                        ))}
+
+                    </ul>
+                    <div className="button-group">
+                        <button className="btn primary" onClick={() => setIsEditing(true)}>Update</button>
+                        <button className="btn danger" onClick={handleDelete}>Delete</button>
+                    </div>
+                </div>
+            </div>
+        );
     }
-
-
 
     return (
         <div className="activity-section full">
-            <h2>Book an Appointment</h2>
+            <h2 className="section-title">{appointment ? 'Update Appointment' : 'Book an Appointment'}</h2>
             <form className="application-form" onSubmit={handleSubmit}>
                 <div className="form-grid">
                     <div className="form-group">
@@ -91,6 +136,7 @@ const AppointmentPage = () => {
                             <option>Friday</option>
                         </select>
                     </div>
+
                     <div className="form-group">
                         <label>Select Time</label>
                         <select value={time} onChange={(e) => setTime(e.target.value)}>
@@ -102,6 +148,7 @@ const AppointmentPage = () => {
                             <option>05:00 PM</option>
                         </select>
                     </div>
+
                     <div className="form-group" style={{ gridColumn: '1 / -1' }}>
                         <button type="button" className="btn primary" onClick={addAvailability}>
                             Add Availability
@@ -133,9 +180,8 @@ const AppointmentPage = () => {
 
                 <div className="form-actions">
                     <button className="btn primary" type="submit" disabled={!studentId}>
-                        Submit
+                        {appointment ? 'Update' : 'Submit'}
                     </button>
-
                     <button
                         className="btn danger"
                         type="button"
@@ -150,8 +196,8 @@ const AppointmentPage = () => {
                     </button>
                 </div>
             </form>
-
         </div>
+
     );
 };
 
