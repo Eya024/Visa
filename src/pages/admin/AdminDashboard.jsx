@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import '../../styles/student/studentDashboard.css';
+import '../../styles/admin/adminDashboard.css';
 import notificationIcon from '../../assets/images/logos/notification.png';
 import applicationIcon from '../../assets/images/logos/application.png';
 import appointmentIcon from '../../assets/images/logos/appointment.png';
@@ -23,7 +23,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
-const StudentDashboard = () => {
+const AdminDashboard = () => {
     const [sidebarVisible, setSidebarVisible] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
@@ -43,12 +43,6 @@ const StudentDashboard = () => {
 
             if (response.ok) {
                 localStorage.setItem('isLoggedIn', 'false');
-                localStorage.removeItem('userID');  // <--- remove userID here
-                localStorage.removeItem('userId'); // Try lowercase version too
-
-                console.log('After logout - localStorage:', localStorage); // Add this
-
-
                 navigate('/');
             } else {
                 console.error('Logout failed');
@@ -75,26 +69,26 @@ const StudentDashboard = () => {
 
                 <nav>
                     <p className="section">HOME</p>
-                    <Link to="/studentDashboard" className={`nav-button ${isActive('/studentDashboard') ? 'active' : ''}`}>
+                    <Link to="/adminDashboard" className={`nav-button ${isActive('/adminDashboard') ? 'active' : ''}`}>
                         <img src={dashboardIcon} alt="Dashboard" className="icon" />
                         Dashboard
                     </Link>
 
                     <p className="section">UTILITIES</p>
                     <ul>
-                        <li className={isActive('/studentDashboard/notifications') ? 'active' : ''}>
-                            <Link to="/studentDashboard/notifications">
+                        <li className={isActive('/adminDashboard/notifications') ? 'active' : ''}>
+                            <Link to="/adminDashboard/notifications">
                                 <img src={notificationIcon} alt="Notifications" className="icon" /> Notifications
                             </Link>
                         </li>
-                        <li className={isActive('/studentDashboard/application') ? 'active' : ''}>
-                            <Link to="/studentDashboard/application">
-                                <img src={applicationIcon} alt="Application" className="icon" /> Application
+                        <li className={isActive('/adminDashboard/application') ? 'active' : ''}>
+                            <Link to="/adminDashboard/application">
+                                <img src={applicationIcon} alt="Application" className="icon" /> Applications Forms
                             </Link>
                         </li>
-                        <li className={isActive('/studentDashboard/appointment') ? 'active' : ''}>
-                            <Link to="/studentDashboard/appointment">
-                                <img src={appointmentIcon} alt="Appointment" className="icon" /> Appointment
+                        <li className={isActive('/adminDashboard/appointment') ? 'active' : ''}>
+                            <Link to="/adminDashboard/appointment">
+                                <img src={appointmentIcon} alt="Appointment" className="icon" /> Appointment Requests
                             </Link>
                         </li>
                     </ul>
@@ -115,4 +109,4 @@ const StudentDashboard = () => {
     );
 };
 
-export default StudentDashboard;
+export default AdminDashboard;

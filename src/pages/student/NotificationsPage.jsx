@@ -1,24 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { checkLoggedIn } from '../../utils/auth';
 
 const NotificationsPage = () => {
-    const activities = [
-        { time: '09:46', desc: 'Payment received from John Doe of $385.90', color: 'purple' },
-        { time: '09:46', desc: 'New sale recorded #ML-3467', color: 'yellow' },
-        { time: '09:46', desc: 'Payment was made of $64.95 to Michael', color: 'yellow' },
-        { time: '09:46', desc: 'New sale recorded #ML-3467', color: 'teal' },
-        { time: '09:46', desc: 'Project meeting', color: 'pink' },
-    ];
+    const [notifications, setNotifications] = useState([]);
+    
+    useEffect(() => {
+        const fetchNotifications = async () => {
+            const user = await checkLoggedIn();
+            if (user && user.id) {
+                try {
+                    const res = await fetch(`http://localhost:8000/api/notifications/user/${user.id}/`, {
+                        credentials: 'include',
+                    });
+                    const data = await res.json();
+                    console.log('Notifications:', data);
+                    setNotifications(data);
+                } catch (error) {
+                    console.error('Failed to fetch notifications:', error);
+                }
+            } else {
+                console.warn('User not logged in or missing ID');
+            }
+        };
+
+        fetchNotifications();
+    }, []);
 
     return (
         <div className="activity-section full">
             <h2>Notifications</h2>
             <ul className="activity-list">
-                {activities.map((a, i) => (
+                
+                {notifications.map((n, i) => (
                     <li key={i}>
-                        <span className={`dot ${a.color}`}></span>
+                        <span className="dot yellow"></span>
                         <div>
-                            <small>{a.time}</small>
-                            <p>{a.desc}</p>
+                            <small>{new Date(n.created_at).toLocaleTimeString()}</small>
+                            <p><strong>{n.title}</strong>: {n.message}</p>
                         </div>
                     </li>
                 ))}

@@ -93,6 +93,12 @@ const Header = () => {
   
         if (response.ok) {
           localStorage.setItem('isLoggedIn', 'false'); // Make sure to update this
+          localStorage.removeItem('userID');  // <--- remove userID here
+          localStorage.removeItem('userId'); // Try lowercase version too
+
+          console.log('After logout - localStorage:', localStorage); // Add this
+
+
           setIsLoggedIn(false);
           navigate('/');
         } else {

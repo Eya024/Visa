@@ -115,14 +115,14 @@ const Inscription = () => {
                 console.log('User registered:', data);
 
                 // Save the registration response data to localStorage
-                localStorage.setItem('userId', data.id);
+                localStorage.setItem('userID', data.id);
                 localStorage.setItem('userMessage', data.message);
                 localStorage.setItem('userName', formData.name);
                 localStorage.setItem('userEmail', formData.email);
                 localStorage.setItem('userPhone', formData.phone);
 
                 // Optionally, you can check the localStorage directly in the console:
-                console.log(localStorage.getItem('userId'));  // Should log the ID value
+                console.log(localStorage.getItem('userID'));  // Should log the ID value
                 console.log(localStorage.getItem('userMessage'));  // Should log the message
                 console.log(localStorage.getItem('userName'));  // Should log the user's name
                 console.log(localStorage.getItem('userEmail'));  // Should log the user's email

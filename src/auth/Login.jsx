@@ -21,39 +21,50 @@ const Login = () => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const validationErrors = validate();
-        setErrors(validationErrors);
-    
-        if (Object.keys(validationErrors).length === 0) {
-            try {
-                const res = await fetch('http://localhost:8000/api/auth/login/', {
-                    method: 'POST',
-                    credentials: 'include', // IMPORTANT: include cookies
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        username,
-                        password,
-                    }),
-                });
-    
-                if (!res.ok) {
-                    const errorData = await res.json();
-                    setErrors({ form: errorData.error || 'Login failed' });
-                    return;
-                }
-    
-                // If login is successful, redirect
-                navigate('/studentDashboard');
-    
-            } catch (err) {
-                console.error('Login error:', err);
-                setErrors({ form: 'Something went wrong. Please try again.' });
+    e.preventDefault();
+    const validationErrors = validate();
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+        try {
+            const res = await fetch('http://localhost:8000/api/auth/login/', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username,
+                    password,
+                }),
+            });
+
+            if (!res.ok) {
+                const errorData = await res.json();
+                setErrors({ form: errorData.error || 'Login failed' });
+                return;
             }
+
+            const data = await res.json();
+
+            // Save user ID to localStorage
+            localStorage.setItem('userID', data.id); // or data.user.id if it's nested
+
+            // Redirect based on role
+            if (data.role === 'admin') {
+                navigate('/adminDashboard');
+            } else {
+                navigate('/studentDashboard');
+            }
+
+        } catch (err) {
+            console.error('Login error:', err);
+            setErrors({ form: 'Something went wrong. Please try again.' });
         }
-    };
+    }
+};
+
+    
     
     useEffect(() => {
         const redirectIfLoggedIn = async () => {

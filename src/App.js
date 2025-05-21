@@ -14,12 +14,18 @@ import NotificationsPage from './pages/student/NotificationsPage';
 import DashboardHome from './pages/student/DashboardHome';
 import Inscription from './auth/Inscription';
 import ApplicationPage from './pages/student/ApplicationPage'; // ✅ Make sure this is imported
+import AppointmentPage from './pages/student/AppointmentPage'; // ✅ Make sure this is imported
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminAppointmentPage from './pages/admin/AdminAppointmentPage';
+import AdminApplicationPage from './pages/admin/AdminApplicationPage';
+
 
 function AppWrapper() {
   const location = useLocation();
 
   const hideHeaderFooter =
     location.pathname.startsWith('/studentDashboard') ||
+    location.pathname.startsWith('/adminDashboard') ||
     location.pathname === '/login' ||
     location.pathname === '/inscription';
 
@@ -48,6 +54,17 @@ function AppWrapper() {
           <Route index element={<DashboardHome />} />
           <Route path="notifications" element={<NotificationsPage />} />
           <Route path="application" element={<ApplicationPage />} /> 
+          <Route path="appointment" element={<AppointmentPage />} /> 
+
+        </Route>
+
+        {/* Admin Dashboard nested routes */}
+        <Route path="/adminDashboard" element={<AdminDashboard />}>
+          <Route index element={<DashboardHome />} />
+          <Route path="notifications" element={<NotificationsPage />} />
+          <Route path="application" element={<AdminApplicationPage />} /> 
+          <Route path="appointment" element={<AdminAppointmentPage />} /> 
+
         </Route>
       </Routes>
 
