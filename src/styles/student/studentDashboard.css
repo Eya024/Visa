@@ -497,6 +497,11 @@ body {
     cursor: pointer;
 }
 
+.button-group .btn:not(:last-child) {
+    margin-right: 5rem; /* adjust spacing as needed */
+}
+
+
 .btn.primary {
     background-color: #6c63ff;
     color: white;

@@ -44,6 +44,51 @@ const AppointmentPage = () => {
             .catch(console.error);
     }, [studentId]);
 
+
+    useEffect(() => {
+        const userID = localStorage.getItem('userID');
+        if (!userID) return;
+
+        const recordVisit = async () => {
+            try {
+                await fetch('http://localhost:8000/api/notifications/record-visit/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: parseInt(userID),
+                        page_name: 'AppointmentPage',
+                    }),
+                });
+            } catch (err) {
+                console.error('Failed to record visit', err);
+            }
+        };
+
+        recordVisit();
+    }, []);
+
+    useEffect(() => {
+        const userID = localStorage.getItem('userID');
+        if (!userID) return;
+
+        const fetchLastVisit = async () => {
+            try {
+                const res = await fetch(`http://localhost:8000/api/notifications/last-visit/${userID}/AppointmentPage`);
+                const data = await res.json();
+                console.log('Last visited at:', data.last_visited_at);
+                // You can store this in a state variable and show it if needed
+            } catch (err) {
+                console.error('Failed to fetch last visit', err);
+            }
+        };
+
+        fetchLastVisit();
+    }, []);
+
+
+
     const addAvailability = () => {
         if (!day || !time) return;
         setAvailabilities([...availabilities, { day, time }]);

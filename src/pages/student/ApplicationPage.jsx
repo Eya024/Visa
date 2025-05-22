@@ -6,46 +6,63 @@ const ApplicationPage = () => {
 
 
     useEffect(() => {
-    const userID = localStorage.getItem('userID'); // Get userID directly from localStorage
+        const userID = localStorage.getItem('userID'); // Get userID directly from localStorage
 
-    if (!userID) return;
+        if (!userID) return;
 
-    const fetchApplication = async () => {
-        try {
-            const res = await fetch(`http://localhost:8000/api/applications/user/${userID}`);
-            const data = await res.json();
-
-            if (data.exists) {
-                setFormData((prev) => ({
-                    ...prev,
-                    ...data.data,
-                    user_id: userID  // ensure it's in formData
-                }));
-                setApplicationId(data.data.id);
-            } else {
-                // If no application exists, make sure user_id is still set
-                setFormData((prev) => ({
-                    ...prev,
-                    user_id: userID
-                }));
+        const recordVisit = async () => {
+            try {
+                await fetch('http://localhost:8000/api/notifications/record-visit/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        user_id: parseInt(userID),
+                        page_name: 'applicationPage'
+                    })
+                });
+            } catch (error) {
+                console.error('Error recording visit:', error);
             }
-        } catch (err) {
-            console.error('Failed to load application', err);
-        }
-    };
+        };
 
-    fetchApplication();
-}, []);
+        recordVisit();
+
+        const fetchApplication = async () => {
+            try {
+                const res = await fetch(`http://localhost:8000/api/applications/user/${userID}`);
+                const data = await res.json();
+
+                if (data.exists) {
+                    setFormData((prev) => ({
+                        ...prev,
+                        ...data.data,
+                        user_id: userID  // ensure it's in formData
+                    }));
+                    setApplicationId(data.data.id);
+                } else {
+                    // If no application exists, make sure user_id is still set
+                    setFormData((prev) => ({
+                        ...prev,
+                        user_id: userID
+                    }));
+                }
+            } catch (err) {
+                console.error('Failed to load application', err);
+            }
+        };
+
+        fetchApplication();
+    }, []);
 
 
     const handleChange = (e) => {
-    const { name, value, files, type } = e.target;
+        const { name, value, files, type } = e.target;
 
-    setFormData((prevData) => ({
-        ...prevData,
-        [name]: type === 'file' ? files[0] : value,
-    }));
-};
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: type === 'file' ? files[0] : value,
+        }));
+    };
 
 
 
