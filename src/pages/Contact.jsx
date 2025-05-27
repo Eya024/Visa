@@ -1,7 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/contact.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const Contact = () => {
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    country: '',
+    message: ''
+  });
+  const [responseMsg] = useState('');
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch('http://localhost:8000/api/contact/send-email/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(form)
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      alert('Your message has been sent!');
+
+      setForm({ name: '', email: '', phone: '', country: '', message: '' });
+      navigate('/');
+
+    } else {
+      alert('Failed to send message.');
+    }
+  };
   return (
     <div>
       {/* Admission Section */}
@@ -10,36 +48,38 @@ const Contact = () => {
           <h1 className="admission-title">Contact</h1>
           <h2 className="admission-subtitle">Have questions about our programs?
           </h2>
-          
-          <p className="admission-description">
-          Elegant Services operates from four strategically located branches. Please contact us with any questions or inquiries.
 
-</p>
+          <p className="admission-description">
+            Elegant Services operates from four strategically located branches. Please contact us with any questions or inquiries.
+
+          </p>
           <button className="admission-button">Get Started</button>
         </div>
       </div>
 
       {/* Contact Form Section */}
       <div className="contact-form-container">
-        <form className="contact-form">
+        <form className="contact-form" onSubmit={handleSubmit}>
           <label>Your Name <span>*</span></label>
-          <input type="text" required />
+          <input type="text" name="name" value={form.name} onChange={handleChange} required />
 
           <label>Your Email <span>*</span></label>
-          <input type="email" required />
+          <input type="email" name="email" value={form.email} onChange={handleChange} required />
 
           <label>Your Phone Number <span>*</span></label>
-          <input type="tel" required />
+          <input type="tel" name="phone" value={form.phone} onChange={handleChange} required />
 
           <label>Your Country <span>*</span></label>
-          <input type="text" required />
+          <input type="text" name="country" value={form.country} onChange={handleChange} required />
 
-          <label>Your Message<span>*</span></label>
-          <textarea rows="4" required></textarea>
+          <label>Your Message <span>*</span></label>
+          <textarea name="message" rows="4" value={form.message} onChange={handleChange} required></textarea>
 
           <button type="submit" className="contact-submit">Send</button>
         </form>
+        {responseMsg && <p>{responseMsg}</p>}
       </div>
+
 
       {/* Canada Branch */}
       <div className="branch-container">

@@ -18,6 +18,7 @@ import AppointmentPage from './pages/student/AppointmentPage'; // ✅ Make sure 
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminAppointmentPage from './pages/admin/AdminAppointmentPage';
 import AdminApplicationPage from './pages/admin/AdminApplicationPage';
+import AdminNotifications from './pages/admin/AdminNotifications';
 
 
 function AppWrapper() {
@@ -61,7 +62,7 @@ function AppWrapper() {
         {/* Admin Dashboard nested routes */}
         <Route path="/adminDashboard" element={<AdminDashboard />}>
           <Route index element={<DashboardHome />} />
-          <Route path="notifications" element={<NotificationsPage />} />
+          <Route path="notifications" element={<AdminNotifications />} />
           <Route path="application" element={<AdminApplicationPage />} /> 
           <Route path="appointment" element={<AdminAppointmentPage />} /> 
 

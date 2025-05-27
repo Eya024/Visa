@@ -230,7 +230,7 @@ const DashboardHome = () => {
         <>
             <div className="content">
                 <div className="revenue-section">
-                    <h2>Application Progress</h2>
+                    <h2 className="h2-title">Application Progress</h2>
                     <table className="product-table">
                         <thead>
                             <tr>
@@ -262,7 +262,7 @@ const DashboardHome = () => {
                 </div>
 
                 <div className="activity-section">
-                    <h2>Notifications</h2>
+                    <h2 className="h2-title">Notifications</h2>
                     <ul className="activity-list">
                         {notifications.map((n, i) => (
                             <li key={i}>
@@ -279,7 +279,7 @@ const DashboardHome = () => {
             </div>
 
             <div className="blog-section">
-                <h2>Latest Articles</h2>
+                <h2 className="h2-title">Latest Articles</h2>
                 <div className="blog-cards">
                     {blogPosts.map(post => (
                         <div className="blog-card" key={post.id}>
