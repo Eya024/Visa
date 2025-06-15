@@ -112,16 +112,28 @@ const AppointmentPage = () => {
         fetch(url, {
             method,
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include', // ✅ sends the session cookie
+
             body: JSON.stringify(payload),
         })
-            .then(res => res.json())
+            .then(async res => {
+                if (!res.ok) {
+                    const text = await res.text();  // fallback to plain text
+                    throw new Error(`Server Error: ${text}`);
+                }
+                return res.json();
+            })
             .then(data => {
                 alert(isEditing ? 'Appointment updated!' : 'Appointment submitted!');
                 setAppointment(data);
                 setAppointmentId(data.id);
                 setIsEditing(false);
             })
-            .catch(console.error);
+            .catch(err => {
+                console.error('Error submitting appointment:', err.message);
+                alert('Failed to submit appointment. ' + err.message);
+            });
+
     };
 
     const handleDelete = () => {

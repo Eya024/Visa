@@ -175,19 +175,32 @@ body {
     margin-top: 1rem;
 }
 
-.product-table th,
 .product-table td {
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #eee;
     font-size: 0.85rem;
+    vertical-align: middle; /* Consistent vertical alignment */
+    width: 25%; /* Distribute width evenly (adjust as needed) */
+}
+
+.product-table th {
+    width: 100%; /* Match td widths for consistency */
 }
 
 .product-info {
     display: flex;
-    gap: 1rem;
+    gap: 0rem;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Prevent wrapping to maintain consistent alignment */
+    width: 100%; /* Ensure it takes full available width */
+}
+
+.product-info > div {
+    flex: 1; /* Allow the text container to take remaining space */
+    min-width: 0; /* Prevent text overflow from breaking layout */
+    overflow: hidden; /* Hide any overflow */
+    text-overflow: ellipsis; /* Add ellipsis for long text */
 }
 
 .product-avatar {
@@ -231,7 +244,7 @@ body {
 
 .activity-list li {
     display: flex;
-    align-items: flex-start;
+    align-items: flex-start; /* Keep this to align with text top */
     gap: 0.75rem;
     margin-bottom: 1rem;
 }
@@ -240,7 +253,8 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    margin-top: 0.4rem;
+    flex-shrink: 0; /* Prevent shrinking */
+    aspect-ratio: 1 / 1; /* Ensure square shape for perfect circle */
 }
 
 .dot.purple { background-color: #6c5ce7; }

@@ -1,0 +1,147 @@
+.activity-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+.activity-section h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.activity-list {
+    list-style: none;
+    padding: 0;
+}
+
+.activity-list li {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.activity-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dot.teal {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #26a69a;
+    border-radius: 50%;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.activity-list li div {
+    flex: 1;
+}
+
+.activity-list li small {
+    display: block;
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.activity-list li p {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.activity-list li p strong {
+    color: #555;
+    font-weight: 600;
+}
+
+.activity-list li select {
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.activity-list li select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.loading-spinner {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 30px;
+    animation: spin 1s linear infinite;
+}
+
+.error-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ff5c5c;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ffe6e6;
+    border-radius: 5px;
+}
+
+.info-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

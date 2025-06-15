@@ -12,6 +12,8 @@ import PrivateRoutes from './auth/PrivateRoutes';
 import StudentDashboard from './pages/student/StudentDashboard';
 import NotificationsPage from './pages/student/NotificationsPage';
 import DashboardHome from './pages/student/DashboardHome';
+import DashboardHomeAdmin from './pages/admin/DashboardHomeAdmin';
+
 import Inscription from './auth/Inscription';
 import ApplicationPage from './pages/student/ApplicationPage'; // ✅ Make sure this is imported
 import AppointmentPage from './pages/student/AppointmentPage'; // ✅ Make sure this is imported
@@ -61,7 +63,7 @@ function AppWrapper() {
 
         {/* Admin Dashboard nested routes */}
         <Route path="/adminDashboard" element={<AdminDashboard />}>
-          <Route index element={<DashboardHome />} />
+          <Route index element={<DashboardHomeAdmin />} />
           <Route path="notifications" element={<AdminNotifications />} />
           <Route path="application" element={<AdminApplicationPage />} /> 
           <Route path="appointment" element={<AdminAppointmentPage />} /> 

@@ -4,7 +4,7 @@ import bg1 from '../../assets/images/bg1.jpg';
 import bg2 from '../../assets/images/bg2.jpg';
 import bg3 from '../../assets/images/bg3.jpg';
 
-const DashboardHome = () => {
+const DashboardHomeAdmin = () => {
     const [products, setProducts] = useState([
         {
             img: '1',
@@ -173,7 +173,7 @@ const DashboardHome = () => {
 
                 try {
                     // Fetch last visited time for AppointmentPage
-                    const visitRes = await fetch(`http://localhost:8000/api/notifications/last-visit/${user.id}/AppointmentPage/`, {
+                    const visitRes = await fetch(`http://localhost:8000/api/notifications/last-visit/${user.id}/AdminAppointment/`, {
                         credentials: 'include',
                     });
                     const visitData = await visitRes.json();
@@ -194,7 +194,7 @@ const DashboardHome = () => {
                 }
                 try {
                     // Fetch last visited time for Application Form
-                    const visitRes = await fetch(`http://localhost:8000/api/notifications/last-visit/${user.id}/applicationPage/`, {
+                    const visitRes = await fetch(`http://localhost:8000/api/notifications/last-visit/${user.id}/AdminApplication/`, {
                         credentials: 'include',
                     });
                     const visitData = await visitRes.json();
@@ -304,4 +304,4 @@ const DashboardHome = () => {
     );
 };
 
-export default DashboardHome;
+export default DashboardHomeAdmin;
