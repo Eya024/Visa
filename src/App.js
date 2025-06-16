@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+// src/App.js
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -8,20 +9,50 @@ import Admission from './pages/Admission';
 import Contact from './pages/Contact';
 import Login from './auth/Login';
 import Client from './pages/Client';
-import PrivateRoutes from './auth/PrivateRoutes';
 import StudentDashboard from './pages/student/StudentDashboard';
 import NotificationsPage from './pages/student/NotificationsPage';
 import DashboardHome from './pages/student/DashboardHome';
 import DashboardHomeAdmin from './pages/admin/DashboardHomeAdmin';
-
 import Inscription from './auth/Inscription';
-import ApplicationPage from './pages/student/ApplicationPage'; // ✅ Make sure this is imported
-import AppointmentPage from './pages/student/AppointmentPage'; // ✅ Make sure this is imported
+import ApplicationPage from './pages/student/ApplicationPage';
+import AppointmentPage from './pages/student/AppointmentPage';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminAppointmentPage from './pages/admin/AdminAppointmentPage';
 import AdminApplicationPage from './pages/admin/AdminApplicationPage';
 import AdminNotifications from './pages/admin/AdminNotifications';
+import { checkLoggedIn } from './utils/auth';
+import { useEffect, useState } from 'react';
 
+function ProtectedRoute({ children, allowedRole }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const verifyUser = async () => {
+      const userData = await checkLoggedIn();
+      setUser(userData);
+      setLoading(false);
+
+      if (!userData) {
+        // If not logged in, redirect to login
+        navigate('/login', { state: { from: location.pathname } });
+      } else if (userData.role !== allowedRole) {
+        // If role doesn't match, redirect to appropriate dashboard
+        const redirectTo = userData.role === 'admin' ? '/adminDashboard' : '/studentDashboard';
+        navigate(redirectTo);
+      }
+    };
+    verifyUser();
+  }, [navigate, location.pathname, allowedRole]);
+
+  if (loading) {
+    return <div>Loading...</div>; // Optional: Add a loading spinner
+  }
+
+  return user && user.role === allowedRole ? children : null;
+}
 
 function AppWrapper() {
   const location = useLocation();
@@ -46,28 +77,43 @@ function AppWrapper() {
         <Route path="/login" element={<Login />} />
         <Route path="/inscription" element={<Inscription />} />
 
-        <Route path="/client" element={
-          <PrivateRoutes>
-            <Client />
-          </PrivateRoutes>
-        } />
+        <Route
+          path="/client"
+          element={
+            <ProtectedRoute allowedRole={null}>
+              <Client />
+            </ProtectedRoute>
+          }
+        />
 
         {/* Student Dashboard nested routes */}
-        <Route path="/studentDashboard" element={<StudentDashboard />}>
+        <Route
+          path="/studentDashboard"
+          element={
+            <ProtectedRoute allowedRole="student">
+              <StudentDashboard />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<DashboardHome />} />
           <Route path="notifications" element={<NotificationsPage />} />
-          <Route path="application" element={<ApplicationPage />} /> 
-          <Route path="appointment" element={<AppointmentPage />} /> 
-
+          <Route path="application" element={<ApplicationPage />} />
+          <Route path="appointment" element={<AppointmentPage />} />
         </Route>
 
         {/* Admin Dashboard nested routes */}
-        <Route path="/adminDashboard" element={<AdminDashboard />}>
+        <Route
+          path="/adminDashboard"
+          element={
+            <ProtectedRoute allowedRole="admin">
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<DashboardHomeAdmin />} />
           <Route path="notifications" element={<AdminNotifications />} />
-          <Route path="application" element={<AdminApplicationPage />} /> 
-          <Route path="appointment" element={<AdminAppointmentPage />} /> 
-
+          <Route path="application" element={<AdminApplicationPage />} />
+          <Route path="appointment" element={<AdminAppointmentPage />} />
         </Route>
       </Routes>
 

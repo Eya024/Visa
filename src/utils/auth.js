@@ -1,3 +1,4 @@
+// src/utils/auth.js
 export const checkLoggedIn = async () => {
     try {
         const res = await fetch('http://localhost:8000/api/auth/me/', {
@@ -7,7 +8,7 @@ export const checkLoggedIn = async () => {
         console.log('checkLoggedIn response data:', data);
 
         if (data.username !== undefined) {
-            return data;  // return the full user object
+            return data; // Return the full user object
         } else {
             return null;
         }
